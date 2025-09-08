@@ -1,120 +1,64 @@
 # ZGame
 
-ZGame is a simple, intuitive game engine for Python. 
+ZGame is a simple game engine for Python. 
+
 
 ## Installation
 
 ```bash
 pip install zgame
+```
+
+## How to use
+Include this at the top of your code. 
+
+```python
+from zgame import zg
+import tkinter
+```
 
 # zgame Commands
 
-## Fill Background
-```python
-zg.fill(color="white")
-# color: optional, default "white"
-```
+These are the available commands in zgame:
 
-## Draw Shape
 ```python
-zg.draw_shape(shape_type="rectangle", name=None, color="black", x=0, y=0, size=50)
-# shape_type: optional, default "rectangle" (options: "rectangle", "oval")
-# name: optional, string identifier
-# color: optional, default "black"
-# x: optional, default 0
-# y: optional, default 0
-# size: optional, default 50
-```
+zg.fill(color="white")  
+# Fill the canvas with a color. Default is white. Fills the entire canvas.
 
-## Draw Text
-```python
-zg.draw_text(text, x=0, y=0, name=None, size=20, color="black")
-# text: required
-# x: optional, default 0
-# y: optional, default 0
-# name: optional
-# size: optional, default 20
-# color: optional, default "black"
-```
+zg.draw_shape(shape_type="rectangle", name="shape", color="black", x=0, y=0, size=50)
+# Draws a rectangle or oval. All arguments optional.
 
-## Draw Sprite
-```python
-zg.draw_sprite(path, name=None, x=0, y=0)
-# path: required (file path)
-# name: optional
-# x: optional, default 0
-# y: optional, default 0
-```
+zg.draw_text(text="Hello", x=50, y=50, name="text", size=12, color="black")
+# Draws text. All arguments optional.
 
-## Move
-```python
-zg.move(name, dx=0, dy=0)
-# name: required
-# dx: optional, default 0
-# dy: optional, default 0
-```
+zg.draw_sprite(path="icon.png", name="sprite", x=0, y=0)
+# Draws an image sprite. All arguments optional.
 
-## Go To Position
-```python
-zg.goto(name, x=0, y=0)
-# name: required
-# x: optional, default 0
-# y: optional, default 0
-```
+zg.move(name="shape", dx=0, dy=0)  
+# Move a shape or sprite by dx/dy.
 
-## Delete
-```python
-zg.delete(name)
-# name: required
-```
+zg.goto(name="shape", x=0, y=0)  
+# Move a shape or sprite to specific coordinates.
 
-## Key Press
-```python
-zg.key_down(key, function)
-# key: required (e.g., "Up", "Down", "space")
-# function: required, callable to execute on key press
-```
+zg.delete(name="shape")  
+# Delete a shape, text, or sprite.
 
-## Mouse Click
-```python
-zg.mouse_down(button=1, function=None)
-# button: optional, default 1
-#   1 = Left click (default)
-#   2 = Middle click
-#   3 = Right click
-# function: required, callable to execute on click
-```
+zg.key_down(key="Return", function=lambda: print("Key pressed"))
+# Bind a key to a function. Default is Return key printing a message.
 
-## Sprite Click
-```python
-zg.sprite_down(name, function)
-# name: required
-# function: required, callable to execute on click
-```
+zg.mouse_down(button=1, function=lambda: print("Mouse clicked"))
+# Bind a mouse button click to a function or a string of code. Left click = 1
 
-## Collision
-```python
-zg.collides(name1, name2, function)
-# name1: required
-# name2: required
-# function: required, callable to execute on collision
-```
+zg.collides(name1="shape", name2="shape", function=lambda: print("Collision!"))
+# Checks if two items collide and runs a function.
 
-## Update Canvas
-```python
-zg.update()
-# no arguments, optional to call manually
-```
+zg.sprite_down(name="sprite", function=lambda: print("Sprite clicked"))
+# Runs a function when a sprite is clicked.
 
-## Run Game
-```python
-zg.run(fps=60)
-# fps: optional, default 60
-```
+zg.stop()  
+# Closes the window.
 
-## Stop Game
-```python
-zg.stop()
-# no arguments
+zg.run()  
+# Starts the window.
 ```
 
