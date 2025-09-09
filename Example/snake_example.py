@@ -37,9 +37,9 @@ def draw_buttons():
 
 # Move snake
 def move_snake():
-    # Only need to declare `food` and `game_over` as global,
-    # as they are reassigned within this function.
-    global food, game_over 
+    # We only need to declare `food` and `game_over` as global,
+    # because they are reassigned to a new value in this function.
+    global food, game_over
     if game_over:
         return
     head_x, head_y = snake[-1]
